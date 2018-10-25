@@ -28,7 +28,9 @@
         let self = this;
         self.$http.get(global.url.accredit,{}).then(function(result) {
           console.log(result.status);
-
+          if(result.status){
+            window.location.href = result.href;
+          }
         })
       }
     }
