@@ -1,0 +1,14 @@
+.content-bar{
+  background: #EFEFEF;
+  margin-bottom: 10px;
+}
+.content-bar .ivu-form-item{
+  margin-bottom: 0;
+  padding: 10px 0;
+}
+.ivu-card{
+  margin: 3px;
+}
+.ivu-poptip-confirm .ivu-poptip-body .ivu-icon{
+  left: 20px;
+}

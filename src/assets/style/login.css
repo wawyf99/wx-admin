@@ -1,0 +1,38 @@
+.login-new{
+  top: 10%;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.Login-title{
+  color: #999;
+  font-size: 42px;
+  text-align: center;
+  margin-top: 180px;
+}
+.Login-form{
+  margin: auto;
+  text-align: center;
+}
+.Login-input{
+  width: 230px;
+}
+.Login-subtn{
+  width: 80px;
+}
+.login-header{
+  margin-bottom: 40px;
+}
+.login-header .login-image{
+  background: url("../image/login.png") no-repeat;
+  width: 433px;
+  height: 198px;
+  margin: auto;
+  background-size: 50%;
+  background-position: center;
+}
+.login-header .login-text{
+  font-size: 26px;
+  color: #57585A;
+  text-align: center;
+}
