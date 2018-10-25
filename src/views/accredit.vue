@@ -26,7 +26,7 @@
     methods: {
       sub:function () {
         let self = this;
-        self.$http.post(global.url.accredit,{}).then(function(result) {
+        self.$http.get(global.url.accredit,{}).then(function(result) {
           console.log(result.status);
 
         })
