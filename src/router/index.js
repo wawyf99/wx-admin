@@ -14,7 +14,7 @@ const router =  new Router({
       component: resolve => require(['@/views/login'], resolve)
     },
     {
-      path: '/wechat/accredit',
+      path: '/accredit',
       name: '授权',
       component: resolve => require(['@/views/accredit'], resolve)
     },
