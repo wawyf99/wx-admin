@@ -5,6 +5,8 @@ import main from '../views/main.vue'
 Vue.use(Router);
 
 const router =  new Router({
+  hashbang: true,
+  mode:'history',
   routes: [
     {
       path: '/',
