@@ -1,6 +1,7 @@
 <template>
   <div class="accredit">
     <Button type="error" icon="alert-circled" class="btn" @click="sub" v-if="!auth_code">微信开放平台授权</Button>
+    <div>{{this.message}}</div>
   </div>
 </template>
 <style>
@@ -21,7 +22,8 @@
     data () {
       return {
         auth_code : this.$route.query.auth_code,
-        app_id : this.$route.query.id
+        app_id : this.$route.query.id,
+        message : ''
       }
     },
     created(){
@@ -44,10 +46,15 @@
       updateToken:function () {
         let self = this;
         self.$http.post(global.url.update_token,{
-          AppId : this.app_id,
-          AuthCode : this.auth_code
+          AppId : self.app_id,
+          AuthCode : self.auth_code
         }).then(function(result) {
-          console.log(result);
+          if(result.status){
+            self.message = result.msg;
+            setTimeout(function () {
+              self.$router.push({path: '/'});
+            },1000)
+          }
         })
       }
     }
