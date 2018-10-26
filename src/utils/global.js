@@ -10,6 +10,7 @@ global.baseUrl = "http://wx.api.rzzc.ltd";
 global.url = {
   login: '/admin/login', //用户登录
   accredit: '/wechat/', //开放平台授权
+  update_token: '/wechat/updateToken', //更新Token
 
   role_add: '/role/add', //添加角色
   role_list: '/role/list', //获取角色列表
