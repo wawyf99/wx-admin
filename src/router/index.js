@@ -5,7 +5,7 @@ import main from '../views/main.vue'
 Vue.use(Router);
 
 const router =  new Router({
-  hashbang: true,
+  hashbang: false,
   mode:'history',
   routes: [
     {
@@ -14,7 +14,7 @@ const router =  new Router({
       component: resolve => require(['@/views/login'], resolve)
     },
     {
-      path: '/accredit',
+      path: '/wechat/accredit',
       name: '授权',
       component: resolve => require(['@/views/accredit'], resolve)
     },
