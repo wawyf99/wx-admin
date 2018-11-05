@@ -2,7 +2,7 @@
   <div class="login-new">
     <div class="login-header">
       <!--<div class="login-image"></div>-->
-      <div class="login-text">运营后台</div>
+      <div class="login-text">开放平台管理后台</div>
     </div>
     <Form ref="formInline" :model="formInline" :rules="ruleInline" inline class="Login-form">
       <FormItem prop="user">

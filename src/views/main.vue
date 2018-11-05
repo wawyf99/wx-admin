@@ -6,7 +6,7 @@
     <Layout>
       <Header>
         <Menu mode="horizontal" theme="dark" active-name="1">
-          <div class="layout-logo">运营后台</div>
+          <div class="layout-logo">开放平台管理后台</div>
           <div class="Main-header-right">
             <Dropdown trigger="click">
               <Button type="primary">

@@ -29,17 +29,11 @@ global.url = {
   account_find: '/admin/account', //获取用户
   account_link: '/admin/link', //获取用户权限
 
-  chat_add_title: '/chat/addTitle', //新增内容
-  chat_get_title: '/chat/getTitle', //获取单条内容
-  chat_delete_title: '/chat/deleteTitle', //删除内容
-  chat_manage_title: '/chat/manageTitle', //管理群聊信息
-
-  domain_add: '/domain/domainAdd',  //新增域名
-  domain_delete: '/domain/domainDelete',  //新增域名
-  domain_operation: '/domain/operation',  //禁用
-  domain_list: '/domain/domainList',  //新增域名
-  domain_one_list: '/domain/domainOneList',  //新增域名
-  domain_timer: '/domain/domainTimer',  //管理定时任务
+  wx_list: '/wx/wxList', //获取公众号列表
+  wx_add: '/wx/wxAdd', //新增公众号
+  wx_get_one: '/wx/wxGetOne', //获取单条记录
+  wx_operation: '/wx/wxOperation',  //修改状态
+  wx_del: '/wx/wxDel', //删除
 
   log: '/log', //获取日志列表
   issue: '/report/issue', //问题反馈
