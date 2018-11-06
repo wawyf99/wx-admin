@@ -5,7 +5,7 @@
 //本地环境
 //global.baseUrl = "http://localhost:3031";
 //正式环境
-global.baseUrl = "http://wx.api.rzzc.ltd";
+global.baseUrl = "http://wx.api.ssmulu.com";
 //api全局路由
 global.url = {
   login: '/admin/login', //用户登录
