@@ -49,10 +49,7 @@
         let self = this;
         self.$http.post(global.url.wx_set_conect, {
         }).then(result => {
-          if(result.status){
-            this.formValidate.AppId = result.data[0].app_id;
-            this.formValidate.AppSecret = result.data[0].app_secret;
-          }
+
         });
       },
     }
