@@ -40,14 +40,30 @@ const router =  new Router({
         },
         {
           path: '/wx',
-          name: '运营后台 / 公众号管理 / 公众号列表',
+          name: '运营后台 / 公众号管理 / 对接选择',
+          component: resolve => require(['@/views/wx/wechat.vue'], resolve),
+        },
+        {
+          path: '/wx/open-list',
+          name: '运营后台 / 公众号管理 / 开放平台',
+          component: resolve => require(['@/views/wx/open-list.vue'], resolve),
+        },
+        {
+          path: '/wx/open-add',
+          name: '运营后台 / 公众号管理 / 新增',
+          component: resolve => require(['@/views/wx/open-add.vue'], resolve),
+        },
+        {
+          path: '/wx/wechat-list',
+          name: '运营后台 / 公众号管理 / 公众号',
           component: resolve => require(['@/views/wx/wechat-list.vue'], resolve),
         },
         {
-          path: '/wx/add',
-          name: '运营后台 / 公众号管理 / 新增公众号',
+          path: '/wx/wechat-add',
+          name: '运营后台 / 公众号管理 / 公众号新增',
           component: resolve => require(['@/views/wx/wechat-add.vue'], resolve),
-        }
+        },
+
       ]
     }
   ]

@@ -3,7 +3,7 @@
  * 全局变量
  */
 //本地环境
-//global.baseUrl = "http://localhost:3031";
+/*global.baseUrl = "http://localhost:3031";*/
 //正式环境
 global.baseUrl = "https://wx.api.ssmulu.com";
 //api全局路由
@@ -34,6 +34,15 @@ global.url = {
   wx_get_one: '/wx/wxGetOne', //获取单条记录
   wx_operation: '/wx/wxOperation',  //修改状态
   wx_del: '/wx/wxDel', //删除
+
+  wx_wechat_list: 'wx/wechatList', //获取公众号列表
+  wx_wechat_del: 'wx/wechatDel', //获取公众号列表
+  wx_wechat_operation: 'wx/wechatOperation', //修改状态
+  wx_wechat_add: 'wx/wechatAdd', //修改状态
+  wx_wechat_get_one: 'wx/wechatGetOne',
+
+  wx_set_conect: 'wx/conect',  //设置接入方式
+  wx_get_conect: 'wx/getConect',  //获取接入方式
 
   log: '/log', //获取日志列表
   issue: '/report/issue', //问题反馈

@@ -12,10 +12,11 @@ import echarts from 'echarts'
 
 Vue.config.productionTip = false
 
-Vue.use(global);
+
 Vue.use(util);
 Vue.use(iView);
 Vue.use(ajax);
+Vue.use(global);
 
 Vue.prototype.$trim = (val) => {
   var result = val;

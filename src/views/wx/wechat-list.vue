@@ -8,8 +8,9 @@
         </FormItem>
         <FormItem label="状态:" prop="status" :label-width="60">
           <RadioGroup v-model="status">
-            <Radio label= '1' >正常</Radio>
-            <Radio label= '2' >暂停</Radio>
+            <Radio label= '1' >禁封</Radio>
+            <Radio label= '2' >候选</Radio>
+            <Radio label= '3' >使用中</Radio>
           </RadioGroup>
         </FormItem>
         <FormItem label="排序:" prop="sorts" :label-width="60">
@@ -24,7 +25,7 @@
           <Button type="error" icon="android-close" @click="cleanBox()">清空</Button>
         </FormItem>
         <FormItem :label-width="0">
-          <Button type="warning" icon="plus" @click="add()">新增域名</Button>
+          <Button type="warning" icon="plus" @click="add()">新增</Button>
         </FormItem>
         <!--<FormItem :label-width="0">
           <Button type="success" @click="openTimer()" icon="android-warning" v-if="timer == 2">定时任务开启中(点击关闭)</Button>
@@ -54,44 +55,14 @@
             key: "id"
           },
           {
-            title: "名称",
-            align: "center",
-            key: "title"
-          },
-          {
-            title: "平台AppId",
+            title: "公众号AppId",
             align: "center",
             key: "app_id"
           },
           {
-            title: "平台AppSecret",
+            title: "公众号AppSecret",
             align: "center",
             key: "app_secret"
-          },
-          {
-            title: "消息加解密Key",
-            align: "center",
-            key: "key"
-          },
-          {
-            title: "消息校验Token",
-            align: "center",
-            key: "token"
-          },
-          {
-            title: "公众号AppID",
-            align: "center",
-            key: "authorizer_app_id"
-          },
-          {
-            title: "更新Token",
-            align: "center",
-            key: "authorizer_refresh_token"
-          },
-          {
-            title: "授权回调地址",
-            align: "center",
-            key: "redirect_url"
           },
           {
             title: "创建时间",
@@ -99,7 +70,20 @@
             render(h, params) {
               let _time = params.row.create_time;
               if(_time != null){
-                _time = new Date(_time).Format("yyyy-mm-dd hh:ss");
+                _time = new Date(_time).Format("yyyy-mm-dd hh:ss:ii");
+              }else{
+                _time = '-'
+              }
+              return h("div", _time);
+            }
+          },
+          {
+            title: "禁封时间",
+            align: "center",
+            render(h, params) {
+              let _time = params.row.close_time;
+              if(_time != null){
+                _time = new Date(_time).Format("yyyy-mm-dd hh:ss:ii");
               }else{
                 _time = '-'
               }
@@ -111,10 +95,12 @@
             align: "center",
             render(h, params) {
               let _str = '';
-              if(params.row.status == '1' ){
-                _str = '正常';
-              }else{
-                _str = '暂停';
+              if(params.row.status == '2' ){
+                _str = '候选';
+              }else if(params.row.status == '1' ){
+                _str = '封禁';
+              }else if(params.row.status == '3' ){
+                _str = '使用中';
               }
               return h("div", _str);
             }
@@ -123,14 +109,14 @@
             title: "操作",
             align: "center",
             render: (h, params) => {
-              if(params.row.status == '3' || params.row.status == '0'){
+              if(params.row.status == '1'){
                 return h("div", '/');
               }else{
                 let _str = '';
-                if(params.row.status == '1' ){
-                  _str = '暂停';
+                if(params.row.status == '3' ){
+                  _str = '候选';
                 }else{
-                  _str = '启用';
+                  _str = '使用';
                 }
                 return h("div", [
                   h("Button",{
@@ -167,7 +153,7 @@
                       {
                         props: {
                           confirm: true,
-                          title: "确定删除?",
+                          title: "确定禁封?",
                         },
                         on: {
                           "on-ok": () => {
@@ -175,7 +161,7 @@
                           },
                         }
                       },
-                      "删除"
+                      "禁封"
                     )
                   ])
                 ]);
@@ -196,7 +182,7 @@
           keywords = this.keywords,
           status = this.status,
           sorts = this.sorts;
-        self.$http.post(global.url.wx_list, {
+        self.$http.post(global.url.wx_wechat_list, {
           keywords: keywords,
           status : status,
           sorts : sorts
@@ -214,7 +200,7 @@
       },
       deleteTitle:function (id) {
         var self = this;
-        self.$http.post(global.url.wx_del, {
+        self.$http.post(global.url.wx_wechat_del, {
           id : id
         }).then(result => {
           if(result.status){
@@ -228,16 +214,18 @@
         });
       },
       update:function(id){
-        this.$router.push({path: '/wx/add', query: {'id':id}});
+        this.$router.push({path: '/wx/wechat-add', query: {'id':id}});
       },
       operation:function (id, status) {
         var self = this;
-        if(status == 1){
-          status = 2;
+
+        if(status == 2){
+          status = 3;
         }else{
-          status = 1;
-        }
-        self.$http.post(global.url.wx_operation, {
+          status = 2;
+        };
+
+        self.$http.post(global.url.wx_wechat_operation, {
           id: id,
           status: status
         }).then(result => {
@@ -246,11 +234,13 @@
             setTimeout(() => {
               this.getList();
             }, 500);
+          }else{
+            this.$Message.error(result.msg);
           }
         });
       },
       add(){
-        this.$router.push({path: '/wx/add'});
+        this.$router.push({path: '/wx/wechat-add'});
       }
     }
   };
