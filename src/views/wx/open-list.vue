@@ -250,7 +250,7 @@
         });
       },
       add(){
-        this.$router.push({path: '/wx/add'});
+        this.$router.push({path: '/wx/open-add'});
       }
     }
   };
