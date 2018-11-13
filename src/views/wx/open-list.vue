@@ -228,7 +228,7 @@
         });
       },
       update:function(id){
-        this.$router.push({path: '/wx/add', query: {'id':id}});
+        this.$router.push({path: '/wx/open-add', query: {'id':id}});
       },
       operation:function (id, status) {
         var self = this;
